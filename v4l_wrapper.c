@@ -549,8 +549,6 @@ int V4LWrapper_CvtColor (char *buffer_in, char *buffer_out, int width, int heigh
 	int i = 0;
 	int j = 0;
 	
-	long imagesize = width * height;
-	
 	if (colorflag == RGB888toYUV422)
 	{
 		float Y0, U0;
@@ -558,6 +556,8 @@ int V4LWrapper_CvtColor (char *buffer_in, char *buffer_out, int width, int heigh
 		float Y2, U2;
 		float Y3, V3;
 		
+		long imagesize = width * height * 3;
+
 		for (i = 0; i < imagesize; i+=12)
 		{
 			r0 = buffer_in[i];
@@ -632,6 +632,8 @@ int V4LWrapper_CvtColor (char *buffer_in, char *buffer_out, int width, int heigh
 		float Y1, U1, V1;
 		float Y2, U2, V2;
 		float Y3, U3, V3;
+
+		long imagesize = width * height * 2;
 
 		unsigned char u0, y0, v1, y1, u2, y2, v3, y3;
 		
